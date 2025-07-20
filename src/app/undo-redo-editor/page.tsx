@@ -239,7 +239,7 @@ export default function UndoRedoEditorPage() {
         changeStart,
         deletedText,
         insertedText,
-        `Replace "${deletedText}" with "${insertedText}"`
+        `Replace &quot;${deletedText}&quot; with &quot;${insertedText}&quot;`
       );
     } else if (insertedText) {
       command = createCommand(

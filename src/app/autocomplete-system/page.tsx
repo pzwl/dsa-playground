@@ -1093,12 +1093,12 @@ export default function SmartAutocompleteSystem() {
                   <Search className="w-12 h-12 mx-auto mb-4 opacity-50" />
                   <p>Start typing to see intelligent search suggestions</p>
                   <p className="text-sm mt-2">
-                    Try: {activeDb === 'custom-words' ? '"adventure", "beautiful", or "happ"' : '"google", "micro", or "app"'}
+                    Try: {activeDb === 'custom-words' ? '&quot;adventure&quot;, &quot;beautiful&quot;, or &quot;happ&quot;' : '&quot;google&quot;, &quot;micro&quot;, or &quot;app&quot;'}
                   </p>
                 </div>
               ) : suggestions.length === 0 ? (
                 <div className="text-center py-8 text-gray-500">
-                  <p>No results found for "{query}"</p>
+                  <p>No results found for &quot;{query}&quot;</p>
                   {searchMode === 'exact' && (
                     <button
                       onClick={() => setSearchMode('fuzzy')}
@@ -1221,8 +1221,8 @@ export default function SmartAutocompleteSystem() {
             <div>
               <h4 className="font-semibold text-indigo-600 mb-2">🌳 Trie-Based Prefix Search</h4>
               <p className="text-sm text-gray-700 mb-3">
-                Every word is stored character by character in a tree structure. When you type "ja", 
-                the algorithm traverses: root → 'j' → 'a' → collect all words from that node.
+                Every word is stored character by character in a tree structure. When you type &quot;ja&quot;, 
+                the algorithm traverses: root → &apos;j&apos; → &apos;a&apos; → collect all words from that node.
               </p>
               <ul className="text-xs text-gray-600 space-y-1">
                 <li>• <strong>Time Complexity:</strong> O(m) where m = query length</li>
@@ -1235,7 +1235,7 @@ export default function SmartAutocompleteSystem() {
               <h4 className="font-semibold text-purple-600 mb-2">🔍 Hash Table + Fuzzy Search</h4>
               <p className="text-sm text-gray-700 mb-3">
                 Combines exact lookups with Levenshtein distance algorithm for typo tolerance. 
-                Handles misspellings like "googel" → "google".
+                Handles misspellings like &quot;googel&quot; → &quot;google&quot;.
               </p>
               <ul className="text-xs text-gray-600 space-y-1">
                 <li>• <strong>Hash Lookup:</strong> O(1) for exact matches</li>
