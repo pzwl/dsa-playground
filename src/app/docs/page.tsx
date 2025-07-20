@@ -465,7 +465,7 @@ export default function DocsPage() {
                     </p>
                     <p className="text-gray-700 leading-relaxed mb-4">
                       The architecture emphasizes clean separation between algorithm logic and presentation layers, 
-                      enabling clear understanding of each algorithm's mechanics while maintaining production-quality code standards.
+                      enabling clear understanding of each algorithms mechanics while maintaining production-quality code standards.
                     </p>
                     <div className="bg-blue-50 p-4 rounded-lg">
                       <h3 className="font-semibold text-blue-800 mb-2">Core Design Principles</h3>
