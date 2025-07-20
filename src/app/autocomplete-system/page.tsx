@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from 'react';
 import { Card } from '@/components/ui/card';
-import { Search, Zap, Clock, TrendingUp, Database, Hash, TreePine, Target, Filter, Settings, Plus, BookOpen, List, Trash2, Eye } from 'lucide-react';
+import { Search, Zap, TrendingUp, Database, Hash, TreePine, Target, Filter, Settings, Plus, BookOpen, List, Trash2, Eye } from 'lucide-react';
 
 // Metadata type
 type MetadataType = {
@@ -439,7 +439,7 @@ class DatabaseManager {
     const words: Array<{ word: string; frequency: number; metadata?: MetadataType }> = [];
     
     // Get all words from the trie
-    const collectWords = (node: any, prefix: string) => {
+    const collectWords = (node: TrieNode, prefix: string) => {
       if (node.isEndOfWord && node.frequency > 0) {
         words.push({
           word: prefix,
@@ -448,7 +448,8 @@ class DatabaseManager {
         });
       }
       
-      for (const [char, childNode] of Object.entries(node.children || {})) {
+      // Iterate over Map entries
+      for (const [char, childNode] of node.children.entries()) {
         collectWords(childNode, prefix + char);
       }
     };
@@ -485,7 +486,7 @@ export default function SmartAutocompleteSystem() {
     operationCount: 0,
     resultsFound: 0
   });
-  const [activeDb, setActiveDb] = useState('programming');
+  const [activeDb, setActiveDb] = useState('custom-words');
   
   // New states for database management
   const [showAddEntry, setShowAddEntry] = useState(false);
@@ -500,6 +501,7 @@ export default function SmartAutocompleteSystem() {
   const [newDbDescription, setNewDbDescription] = useState('');
   const [showAllWords, setShowAllWords] = useState(false);
   const [allWords, setAllWords] = useState<Array<{ word: string; frequency: number; metadata?: MetadataType }>>([]);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   // Enhanced search function with better fuzzy search
   const performSearch = useCallback(async (searchQuery: string, mode: SearchMode) => {
@@ -551,6 +553,8 @@ export default function SmartAutocompleteSystem() {
       setNewDescription('');
       setNewFrequency(100);
       setShowAddEntry(false);
+      // Trigger refresh to update UI
+      setRefreshTrigger(prev => prev + 1);
       // Refresh search if there's a query
       if (query) {
         performSearch(query, searchMode);
@@ -582,6 +586,8 @@ export default function SmartAutocompleteSystem() {
 
     setBulkWords('');
     setShowAddEntry(false);
+    // Force re-render to update word counts
+    setRefreshTrigger(prev => prev + 1);
     // Refresh search if there's a query
     if (query) {
       performSearch(query, searchMode);
@@ -666,7 +672,12 @@ export default function SmartAutocompleteSystem() {
     performSearch(query, searchMode);
   };
 
+  // Get all databases for display - include refreshTrigger to force re-render
   const databases = dbManager.getAllDatabases();
+  // Use refreshTrigger to ensure databases update
+  React.useEffect(() => {
+    // This effect runs when refreshTrigger changes, causing re-render
+  }, [refreshTrigger]);
   const currentDb = dbManager.getActiveDatabase();
 
   return (
@@ -1050,7 +1061,7 @@ export default function SmartAutocompleteSystem() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={`Search ${currentDb?.metadata.description.toLowerCase()}... (try "${
-                  activeDb === 'programming' ? 'java' : 'goo'
+                  activeDb === 'custom-words' ? 'java' : 'goo'
                 }")`}
                 className="w-full pl-10 pr-4 py-4 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
               />
@@ -1082,7 +1093,7 @@ export default function SmartAutocompleteSystem() {
                   <Search className="w-12 h-12 mx-auto mb-4 opacity-50" />
                   <p>Start typing to see intelligent search suggestions</p>
                   <p className="text-sm mt-2">
-                    Try: {activeDb === 'programming' ? '"javascript", "react", or "alg"' : '"google", "micro", or "app"'}
+                    Try: {activeDb === 'custom-words' ? '"adventure", "beautiful", or "happ"' : '"google", "micro", or "app"'}
                   </p>
                 </div>
               ) : suggestions.length === 0 ? (
