@@ -11,7 +11,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Framer Motion](https://img.shields.io/badge/Framer-Motion-black?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 
-[🚀 Live Demo](http://localhost:3000) • [📖 Documentation](http://localhost:3000/docs) • [🎯 Projects Overview](#-projects-overview)
+
 
 </div>
 
