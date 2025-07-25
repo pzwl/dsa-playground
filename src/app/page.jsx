@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -24,79 +24,79 @@ export default function HomePage() {
       id: 'autocomplete',
       name: 'Smart Search & Autocomplete',
       description: 'Experience how Trie and Hash Tables power real-time search suggestions, just like Google or IDE autocomplete.',
-      icon: Search,
+      icon,
       href: '/autocomplete-system',
       color: 'from-blue-500 to-cyan-500',
       bgGradient: 'from-blue-50 to-cyan-50',
       algorithms: ['Trie Data Structure', 'Hash Tables', 'Prefix Matching'],
       realWorld: 'Google Search, IDE Autocomplete, Spell Checkers',
-      featured: true,
-      emoji: '🔍',
+      featured,
+      emoji: 'ðŸ”',
       difficulty: 'Intermediate'
     },
     {
       id: 'navigation',
       name: 'GPS Navigation System',
       description: 'See how GPS apps like Google Maps find the shortest route using graph algorithms.',
-      icon: Network,
+      icon,
       href: '/gps-navigation',
       color: 'from-green-500 to-emerald-500',
       bgGradient: 'from-green-50 to-emerald-50',
       algorithms: ['Dijkstra Algorithm', 'A* Search', 'Graph Traversal'],
       realWorld: 'Google Maps, Waze, Uber Routing',
-      featured: true,
-      emoji: '🗺️',
+      featured,
+      emoji: 'ðŸ—ºï¸',
       difficulty: 'Advanced'
     },
     {
       id: 'social-network',
       name: 'Social Network Analysis',
       description: 'Discover how social media platforms suggest friends and analyze connections.',
-      icon: Brain,
+      icon,
       href: '/social-network',
       color: 'from-purple-500 to-pink-500',
       bgGradient: 'from-purple-50 to-pink-50',
       algorithms: ['BFS/DFS', 'Graph Analysis', 'Community Detection'],
       realWorld: 'Facebook Friend Suggestions, LinkedIn Connections',
-      featured: false,
-      emoji: '👥',
+      featured,
+      emoji: 'ðŸ‘¥',
       difficulty: 'Intermediate'
     },
     {
       id: 'undo-redo',
       name: 'Undo/Redo System',
       description: 'Create a mini text editor with undo/redo functionality using stacks, like in every software.',
-      icon: Database,
+      icon,
       href: '/undo-redo-editor',
       color: 'from-indigo-500 to-blue-500',
       bgGradient: 'from-indigo-50 to-blue-50',
       algorithms: ['Stack Data Structure', 'Command Pattern', 'State Management'],
       realWorld: 'Text Editors, Photoshop, Code Editors',
-      featured: false,
-      emoji: '↩️',
+      featured,
+      emoji: 'â†©ï¸',
       difficulty: 'Beginner'
     },
     {
       id: 'browser-history',
       name: 'Browser History Navigation',
       description: 'Simulate browser back/forward buttons and understand how browsers manage navigation history.',
-      icon: Play,
+      icon,
       href: '/browser-history',
       color: 'from-yellow-500 to-orange-500',
       bgGradient: 'from-yellow-50 to-orange-50',
       algorithms: ['Linked Lists', 'Stack Operations', 'History Management'],
       realWorld: 'Chrome, Firefox, Safari Navigation',
-      featured: false,
-      emoji: '🌐',
+      featured,
+      emoji: 'ðŸŒ',
       difficulty: 'Beginner'
     }
   ];
 
   const stats = [
-    { icon: Code, label: 'Interactive Projects', value: '5+' },
-    { icon: Zap, label: 'Algorithms Covered', value: '15+' },
-    { icon: Users, label: 'Learning Hours', value: '10+' },
-    { icon: BookOpen, label: 'Real-World Apps', value: '25+' }
+    { icon, label: 'Interactive Projects', value: '5+' },
+    { icon, label: 'Algorithms Covered', value: '15+' },
+    { icon, label: 'Learning Hours', value: '10+' },
+    { icon, label: 'Real-World Apps', value: '25+' }
   ];
 
   return (
@@ -107,7 +107,7 @@ export default function HomePage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <motion.div
-                whileHover={{ rotate: 360 }}
+                whileHover={{ rotate }}
                 transition={{ duration: 0.5 }}
                 className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center"
               >
@@ -118,7 +118,7 @@ export default function HomePage() {
                 <p className="text-xs text-gray-500">Interactive Learning Platform</p>
               </div>
             </div>
-            <div className="hidden md:flex items-center space-x-6">
+            <div className="hidden md items-center space-x-6">
               <Link href="/docs">
                 <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
                   <BookOpen className="h-4 w-4 mr-2" />
@@ -141,7 +141,7 @@ export default function HomePage() {
 
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center"
@@ -253,9 +253,7 @@ export default function HomePage() {
                             <div>
                               <h3 className="text-2xl font-bold text-gray-900 mb-2">{app.name}</h3>
                               <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
-                                app.difficulty === 'Beginner' ? 'bg-green-100 text-green-800' :
-                                app.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                                'bg-red-100 text-red-800'
+                                app.difficulty === 'Beginner' ? 'bg-green-100 text-green-800'  app.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800'  'bg-red-100 text-red-800'
                               }`}>
                                 {app.difficulty}
                               </span>
@@ -263,7 +261,7 @@ export default function HomePage() {
                           </div>
                           <motion.div
                             className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                            whileHover={{ x: 5 }}
+                            whileHover={{ x }}
                           >
                             <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                               <ArrowRight className="h-4 w-4 text-gray-700" />
@@ -326,9 +324,7 @@ export default function HomePage() {
                           <div>
                             <h3 className="text-lg font-bold text-gray-900">{app.name}</h3>
                             <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-                              app.difficulty === 'Beginner' ? 'bg-green-100 text-green-800' :
-                              app.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                              'bg-red-100 text-red-800'
+                              app.difficulty === 'Beginner' ? 'bg-green-100 text-green-800'  app.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800'  'bg-red-100 text-red-800'
                             }`}>
                               {app.difficulty}
                             </span>
@@ -380,7 +376,7 @@ export default function HomePage() {
             </div>
             <p className="text-gray-400 mb-6">Interactive learning platform for data structures and algorithms</p>
             <div className="flex justify-center space-x-6 text-gray-400">
-              <span>Made by Prajjwal ❤️</span>
+              <span>Made by Prajjwal â¤ï¸</span>
             </div>
           </div>
         </div>
@@ -388,3 +384,4 @@ export default function HomePage() {
     </div>
   );
 }
+
